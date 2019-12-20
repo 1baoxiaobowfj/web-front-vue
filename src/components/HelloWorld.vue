@@ -12,7 +12,7 @@ import axios from 'axios';
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
   mounted() {
-    axios.get('/mytest').then(res => {
+    axios.post('/findByName', {name: '包大人', age: '33'}).then(res => {
       console.log(res)
       debugger
     })
