@@ -54,7 +54,14 @@ validatePhone() {}
     form.validate((valid: any) => {
       if (valid) {
         if(this.ruleForm.password === this.ruleForm.repassword) {
+          const loading = this.$loading({
+            lock: true,
+            text: '注册中，请稍后',
+            spinner: 'el-icon-loading',
+            background: 'rgba(0, 0, 0, 0.7)'
+          });
           this.register(this.ruleForm).then((res:any) => {
+            loading.close();
             if(res.code === 0) {
               this.$message.success('注册成功');
             } else {

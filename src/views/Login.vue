@@ -45,7 +45,14 @@ export default class Login extends Vue {
     const form: { [k: string]: any } = this.$refs[formName];
     form.validate((valid: any) => {
       if (valid) {
+        const loading = this.$loading({
+          lock: true,
+          text: '登陆中，请稍后',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
         this.login(this.ruleForm).then((res:any) => {
+          loading.close();
           if(res.code === 0) {
             this.$message.success('登陆成功');
           } else {
