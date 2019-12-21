@@ -1,7 +1,19 @@
 import axios from 'axios';
+import store from '../store';
 
 // 添加请求拦截器
 axios.interceptors.request.use((config: any) => {
+    //解决IE浏览器下get方法强缓存的问题
+    if (config.method === 'get') {
+        config.params = {
+            _t: Date.parse(new Date().toString()) / 1000,
+            ...config.params
+        }
+    }
+    if (store.state.token && !config.headers['X-Token']) {
+        config.headers['X-Token'] = store.state.token;
+    }
+    
     return config
 }, (error: any) => {
     return Promise.reject(error)

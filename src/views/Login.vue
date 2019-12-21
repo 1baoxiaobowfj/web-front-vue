@@ -29,11 +29,12 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { Action } from 'vuex-class';
+import { Action, Mutation } from 'vuex-class';
 
 @Component
 export default class Login extends Vue {
   @Action('login') private login:any
+  @Mutation('setToken') private setToken:any
   ruleForm = { phone: "", password: "" };
   rules = {
     phone: [{ required: true, message: "请输入账号", trigger: "blur" }],
@@ -53,8 +54,9 @@ export default class Login extends Vue {
         });
         this.login(this.ruleForm).then((res:any) => {
           loading.close();
-          if(res.code === 0) {
-            this.$message.success('登陆成功');
+          if(res.code === 0 && res.data) {
+            this.setToken(res.data);
+            this.$router.push('/home');//登陆成功，跳转到主页
           } else {
             this.$message.error(res.msg);
           }
