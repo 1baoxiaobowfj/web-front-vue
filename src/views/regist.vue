@@ -4,7 +4,7 @@
       :model="ruleForm"
       :rules="rules"
       ref="ruleForm"
-      label-width="100px"
+      label-width="80px"
       class="demo-ruleForm"
     >
       <el-form-item class="m_l0">
