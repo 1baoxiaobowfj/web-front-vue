@@ -22,9 +22,9 @@
       <el-form-item label="确认密码" prop="repassword" class="m_l30 m_r30 m_t30">
         <el-input type="pass" v-model="ruleForm.repassword" clearable></el-input>
       </el-form-item>
-      <el-form-item class="m_l30 m_r30 m_t30">
-        <el-button type="primary" @click="submitForm('ruleForm')">注 册</el-button>
-        <el-button @click="resetForm('ruleForm')">重 置</el-button>
+      <el-form-item class="m_r30 m_t30">
+        <el-button type="warning" @click="submitForm('ruleForm')">注 册</el-button>
+        <el-button type="danger" @click="resetForm('ruleForm')">重 置</el-button>
       </el-form-item>
     </el-form>
   </div>

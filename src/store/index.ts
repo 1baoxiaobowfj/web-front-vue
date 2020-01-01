@@ -9,12 +9,21 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     token: getStorage('token') || null,
+    userInfo: getStorage('userInfo') || null,
   },
   mutations: {
     setToken(state, data) {
       data ? setStorage('token', data) : clearStorage('token');
       state.token = data
-    }
+    },
+    setUserInfo(state, data) {
+      data ? setStorage('userInfo', data) : clearStorage('userInfo');
+      state.userInfo = data
+    },
+    logout() {
+      clearStorage('token');
+      clearStorage('userInfo');
+    },
   },
   actions: {
   },

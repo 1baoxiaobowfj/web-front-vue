@@ -34,7 +34,9 @@ import { Action, Mutation } from 'vuex-class';
 @Component
 export default class Login extends Vue {
   @Action('login') private login:any
+  @Action('getUserInfo') private getUserInfo:any
   @Mutation('setToken') private setToken:any
+  @Mutation('setUserInfo') private setUserInfo:any
   ruleForm = { phone: "", password: "" };
   rules = {
     phone: [{ required: true, message: "请输入账号", trigger: "blur" }],
@@ -56,7 +58,12 @@ export default class Login extends Vue {
           loading.close();
           if(res.code === 0 && res.data) {
             this.setToken(res.data);
-            this.$router.push('/home');//登陆成功，跳转到主页
+            this.getUserInfo(this.ruleForm).then((response:any) => {
+              if(response.code === 0) {
+                this.setUserInfo(response.data);
+                this.$router.push('/home');//登陆成功,获取到用户信息，跳转到主页
+              }
+            });
           } else {
             this.$message.error(res.msg);
           }

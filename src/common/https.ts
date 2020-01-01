@@ -1,5 +1,6 @@
 import axios from 'axios';
 import store from '../store';
+import { Message } from 'element-ui'
 
 // 添加请求拦截器
 axios.interceptors.request.use((config: any) => {
@@ -23,8 +24,23 @@ axios.interceptors.request.use((config: any) => {
 axios.interceptors.response.use((response: any) => {
     return response.data;
 }, (error: any) => {
-    return Promise.resolve(error.response)
+    const { status } = error.response;
+    errorMsg(status);
+    
+    return Promise.reject(new Error(
+        error.response ? error.response.data : '网络错误'
+    ))
 })
+
+const errorMsg = (status: any) => {
+    switch(status) {
+        case 500:
+            Message.error('服务器异常')
+            break;
+        default:
+            break;
+    }
+}
 
 const headers = { 'Content-Type': 'application/json' };
 

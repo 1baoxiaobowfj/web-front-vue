@@ -16,6 +16,12 @@ export default {
             return res
         })
     },
+    getUserInfo(state:any, params:any){//注册
+      const url = '/myapi/getUserInfo'
+      return  https.post(url, params).then((res: any) => {
+          return res
+      })
+    },
   },
   modules: {
   },
