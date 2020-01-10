@@ -20,9 +20,11 @@ export default new Vuex.Store({
       data ? setStorage('userInfo', data) : clearStorage('userInfo');
       state.userInfo = data
     },
-    logout() {
+    logout(state) {
       clearStorage('token');
       clearStorage('userInfo');
+      state.token = '';
+      state.userInfo = null;
     },
   },
   actions: {

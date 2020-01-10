@@ -17,10 +17,10 @@
         <el-input v-model="ruleForm.username" clearable></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password" class="m_l30 m_r30 m_t30">
-        <el-input type="pass" v-model="ruleForm.password" clearable></el-input>
+        <el-input type="password" v-model="ruleForm.password" clearable></el-input>
       </el-form-item>
       <el-form-item label="确认密码" prop="repassword" class="m_l30 m_r30 m_t30">
-        <el-input type="pass" v-model="ruleForm.repassword" clearable></el-input>
+        <el-input type="password" v-model="ruleForm.repassword" clearable></el-input>
       </el-form-item>
       <el-form-item class="m_r30 m_t30">
         <el-button type="warning" @click="submitForm('ruleForm')">注 册</el-button>

@@ -14,7 +14,7 @@
         <el-input v-model="ruleForm.phone" clearable></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password" class="m_l30 m_r30 m_t30">
-        <el-input type="pass" v-model="ruleForm.password" clearable></el-input>
+        <el-input type="password" v-model="ruleForm.password" clearable></el-input>
       </el-form-item>
       <el-form-item class="m_l30 m_r30 ">
         <div @click="goToRegist" class="pointer text-left">注 册</div>

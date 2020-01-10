@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <span class="color_66 m_r30">欢迎{{userInfo.username}}!</span>
+    <span class="color_66 m_r30">欢迎{{userName}}!</span>
     <span class="pointer dialog" @click="hanldLogout">退回登陆</span>
   </div>
 </template>
@@ -17,6 +17,9 @@ export default class Header extends Vue {
   private hanldLogout() {
     this.logout();
     this.$router.push({name: 'login'});
+  }
+  get userName(){
+    return this.userInfo ? this.userInfo.username : '';
   }
 }
 </script>
